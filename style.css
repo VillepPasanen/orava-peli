@@ -97,12 +97,14 @@ body {
    SVG injektoidaan fetch:llä jotta --orava-fur CSS-muuttuja toimii. */
 #squirrel {
   position: absolute;
-  bottom: 8px;
-  width: 64px;
-  height: 64px;
+  bottom: 4px;
+  width: 80px;
+  height: 80px;
   transform: translateX(0);
   pointer-events: none;
   z-index: 10;
+  /* Varjo auttaa erottumaan metsätaustasta */
+  filter: drop-shadow(1px 3px 4px rgba(62, 39, 25, 0.55));
 }
 
 #squirrel svg {

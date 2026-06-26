@@ -5,7 +5,7 @@
 // ---- Vakiot ----
 const CANVAS_W       = 480;
 const CANVAS_H       = 500;
-const SQUIRREL_W     = 64;    // #squirrel-elementin leveys px (vastaa SVG-suhteita)
+const SQUIRREL_W     = 80;    // #squirrel-elementin leveys px (vastaa SVG-suhteita)
 const SQUIRREL_SPEED = 6;     // pikseliä per frame
 const NUT_DRAW_SIZE  = 48;    // pähkinäkuvan koko canvasilla (px, neliö)
 const NUT_RADIUS     = 17;    // törmäyssäde (px)
@@ -136,12 +136,15 @@ function renderSquirrel() {
 }
 
 // ---- Törmäystarkistus (AABB, ottaa huomioon oravan todellisen sijainnin SVG:ssä) ----
-// squirrel.svg: hahmo sijaitsee x≈13–108 ja y≈12–109 (viewBox 128×128, näytetään 64px)
+// squirrel.svg viewBox 128×128, näytetään 80px:
+//   vaakasuunta: keho x≈13–108 → skaalattuna x≈8–67 elementissä
+//   pystysuunta:  keho y≈26–109 → skaalattuna y≈16–68 elementissä
 function collides(nut) {
-  const sx = squirrelX + 6;             // oravan vasemman reunan todellinen x
-  const sw = SQUIRREL_W - 12;           // oravan todellinen leveys (~52 px)
-  const sy = CANVAS_H - 8 - SQUIRREL_W + 10; // oravan yläreuna canvaskoordinaateissa
-  const sh = SQUIRREL_W - 10;
+  const elemTop = CANVAS_H - 4 - SQUIRREL_W;  // CSS: bottom:4px
+  const sx = squirrelX + 8;                    // kehon vasen reuna
+  const sw = SQUIRREL_W - 18;                  // kehon leveys (~62 px)
+  const sy = elemTop + 16;                     // kehon yläreuna
+  const sh = 52;                               // kehon korkeus
   return (
     nut.x + NUT_RADIUS > sx &&
     nut.x - NUT_RADIUS < sx + sw &&
