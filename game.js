@@ -128,7 +128,9 @@ function drawNut(nut) {
   }
 }
 
-// Sijoita orava DOM-elementti ja peilaa suunnan mukaan
+// Liikuta oravaa: VAIN DOM-muutos, ei koskaan canvas-piirtoa.
+// Orava on inline-SVG #squirrel-divissä (index.html).
+// Väri tulee CSS-muuttujasta var(--orava-fur) joka on :root:ssa style.css:ssä.
 function renderSquirrel() {
   squirrelEl.style.transform = `translateX(${squirrelX}px)`;
   if (keys['ArrowLeft'])       squirrelEl.classList.add('facing-left');

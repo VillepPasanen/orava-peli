@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- Pelin otsikko SVG-kuvana (assets/ui_title.svg) -->
+  <!-- Pelin otsikko SVG-kuvana -->
   <div id="game-title">
     <img src="assets/ui_title.svg" alt="Pähkinä-jahti" />
   </div>
@@ -16,19 +16,37 @@
   <!-- HUD: pisteet vasemmalla, elämäikonit oikealla -->
   <div id="hud">
     <span id="score">Pisteet: 0</span>
-    <!-- Elämäikonit rakennetaan JS:ssä updateHUD():ssa käyttäen ui_life.svg:tä -->
     <span id="lives-display"></span>
   </div>
 
   <!-- Pelikenttä -->
   <div id="game-container">
 
-    <!-- Canvas: bg_forest.svg-tausta + putoavat pähkinät (acorn.svg / nut_golden.svg) -->
+    <!-- Canvas: bg_forest.svg-tausta + putoavat pähkinät -->
     <canvas id="game-canvas" width="480" height="500"></canvas>
 
-    <!-- Orava: DOM-elementti canvasin PÄÄLLÄ, inline-SVG:nä fetch:n kautta.
-         Turkin väri tulee CSS-muuttujasta --orava-fur (:root, style.css). -->
-    <div id="squirrel"></div>
+    <!-- Orava: inline-SVG DOM-elementtinä canvasin päällä.
+         SVG on upotettu suoraan HTML:ään (ei fetchiä) jotta:
+           1. lataus on välitön ja luotettava
+           2. dokumentin CSS-muuttujat (--orava-fur) periytyvät SVG:lle
+         game.js liikuttaa tätä elementtiä translateX:llä — EI piirrä canvasiin.
+         Värin vaihto: muuta --orava-fur :root-lohkossa (style.css). -->
+    <div id="squirrel">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+        <g stroke="#3E2719" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+          <path fill="var(--orava-fur)" d="
+            M 64 98 C 40 106 14 92 13 63 C 12 38 31 21 56 26 C 41 34 33 50 35 67 C 37 85 49 95 64 98 Z
+            M 108 58 C 104 44 99 35 95 32 C 96 23 98 14 103 12 C 108 10 111 17 109 26 C 108 33 102 36 96 39 C 87 33 74 31 63 36 C 50 42 45 57 46 75 C 47 93 58 108 76 109 C 92 110 102 97 102 81 C 102 71 104 64 108 58 Z
+          "></path>
+          <path fill="var(--orava-fur-light)" stroke-width="3" d="M 92 66 C 101 70 102 87 94 99 C 88 107 76 107 72 96 C 68 84 78 64 92 66 Z"></path>
+          <path fill="var(--orava-fur-dark)" stroke="none" d="M 100 17 C 103 16 105 20 104 25 C 101 24 99 21 100 17 Z"></path>
+          <ellipse fill="var(--orava-fur)" cx="86" cy="103" rx="7" ry="5"></ellipse>
+          <ellipse fill="var(--orava-fur)" cx="64" cy="106" rx="8" ry="5"></ellipse>
+        </g>
+        <circle fill="#3E2719" cx="93" cy="44" r="3.6"></circle>
+        <circle fill="#3E2719" cx="108" cy="55" r="3"></circle>
+      </svg>
+    </div>
 
     <!-- Game Over -peitto -->
     <div id="overlay" class="hidden">
@@ -46,22 +64,6 @@
 
   <p id="hint">← → nuolinäppäimillä liikutaan</p>
 
-  <script>
-    // Injektoi squirrel.svg DOM:iin fetch:llä jotta CSS-muuttujat (--orava-fur) toimivat.
-    // <img>-tagilla ladattu SVG ei peri dokumentin CSS-muuttujia.
-    fetch('assets/squirrel.svg')
-      .then(r => r.text())
-      .then(svg => { document.getElementById('squirrel').innerHTML = svg; })
-      .catch(() => {
-        // Fallback: yksinkertainen oranssi orava (kehitystä varten, file://-protokolla)
-        document.getElementById('squirrel').innerHTML =
-          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
-          '<ellipse cx="32" cy="36" rx="20" ry="22" fill="var(--orava-fur)"/>' +
-          '<ellipse cx="48" cy="20" rx="12" ry="16" fill="var(--orava-fur)" transform="rotate(20 48 20)"/>' +
-          '<circle cx="38" cy="22" r="4" fill="#1a1a1a"/>' +
-          '</svg>';
-      });
-  </script>
   <script src="game.js"></script>
 </body>
 </html>
