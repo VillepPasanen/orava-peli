@@ -1,0 +1,207 @@
+/* =====================================================
+   Oravan väri-konventio:
+   --orava-fur        = pääväri (turkki, korvat, häntä, tassut)
+   --orava-fur-light  = vaaleanpuoli (vatsa, häntänsisus)
+   --orava-fur-dark   = tumma aksentti (nenä, varjot)
+   Vaihda oravan väri muuttamalla näitä kolmea riviä.
+   ===================================================== */
+:root {
+  --orava-fur: #C06A35;
+  --orava-fur-light: #F8E4C1;
+  --orava-fur-dark: #9E5328;
+}
+
+/* Reset ja perusasettelu */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #2b1d0e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #FCEFD6;
+  user-select: none;
+}
+
+/* Pelin otsikko SVG-kuvana */
+#game-title {
+  margin-bottom: 0.5rem;
+}
+
+#game-title img {
+  display: block;
+  width: 420px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* HUD: pisteet ja elämät */
+#hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
+  padding: 0.35rem 0.75rem;
+  background: #3E2719;
+  border: 2px solid #3E2719;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FCEFD6;
+}
+
+/* Elämäikonit SVG-kuvina */
+#lives-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.life-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.life-icon.life-lost {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+
+/* Pelikenttä: canvas + orava DOM-elementtinä päällä */
+#game-container {
+  position: relative;
+  width: 480px;
+  height: 500px;
+  overflow: hidden;
+  border: 2px solid #3E2719;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  cursor: none;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Orava: DOM-elementti canvasin päällä, ei rasteroida.
+   SVG injektoidaan fetch:llä jotta --orava-fur CSS-muuttuja toimii. */
+#squirrel {
+  position: absolute;
+  bottom: 8px;
+  width: 64px;
+  height: 64px;
+  transform: translateX(0);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#squirrel svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Peilataan SVG kun orava liikkuu vasemmalle */
+#squirrel.facing-left svg {
+  transform: scaleX(-1);
+}
+
+/* Game Over -peitto: tyyli vastaa ui_gameover.svg:n palettia */
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(252, 239, 214, 0.97);
+  z-index: 20;
+  border-radius: 0 0 6px 6px;
+}
+
+#overlay.hidden {
+  display: none;
+}
+
+#overlay-header {
+  width: 100%;
+  background: var(--orava-fur);
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid #3E2719;
+}
+
+#overlay-header h2 {
+  font-size: 2.2rem;
+  color: #FCEFD6;
+  text-shadow: 2px 2px 0 #3E2719;
+  letter-spacing: 0.03em;
+}
+
+#overlay-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+}
+
+#overlay-body p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--orava-fur-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+#final-score-display {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #DB8A41;
+  text-shadow: 2px 2px 0 #3E2719;
+  line-height: 1;
+}
+
+#restart-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #9CBE5C;
+  color: #FCEFD6;
+  border: 3px solid #3E2719;
+  border-radius: 32px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 0 #3E2719;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#restart-btn:hover {
+  background: #b4d470;
+  transform: scale(1.05);
+}
+
+#restart-btn:active {
+  transform: scale(0.97);
+}
+
+/* Pieni ohjeteksti alla */
+#hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.4;
+  color: #FCEFD6;
+}

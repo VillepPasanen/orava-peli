@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pähkinä-jahti</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pelin otsikko SVG-kuvana (assets/ui_title.svg) -->
+  <div id="game-title">
+    <img src="assets/ui_title.svg" alt="Pähkinä-jahti" />
+  </div>
+
+  <!-- HUD: pisteet vasemmalla, elämäikonit oikealla -->
+  <div id="hud">
+    <span id="score">Pisteet: 0</span>
+    <!-- Elämäikonit rakennetaan JS:ssä updateHUD():ssa käyttäen ui_life.svg:tä -->
+    <span id="lives-display"></span>
+  </div>
+
+  <!-- Pelikenttä -->
+  <div id="game-container">
+
+    <!-- Canvas: bg_forest.svg-tausta + putoavat pähkinät (acorn.svg / nut_golden.svg) -->
+    <canvas id="game-canvas" width="480" height="500"></canvas>
+
+    <!-- Orava: DOM-elementti canvasin PÄÄLLÄ, inline-SVG:nä fetch:n kautta.
+         Turkin väri tulee CSS-muuttujasta --orava-fur (:root, style.css). -->
+    <div id="squirrel"></div>
+
+    <!-- Game Over -peitto -->
+    <div id="overlay" class="hidden">
+      <div id="overlay-header">
+        <h2>Peli ohi!</h2>
+      </div>
+      <div id="overlay-body">
+        <p>Pähkinöitä kerätty</p>
+        <div id="final-score-display">0</div>
+        <button id="restart-btn">Pelaa uudelleen</button>
+      </div>
+    </div>
+
+  </div>
+
+  <p id="hint">← → nuolinäppäimillä liikutaan</p>
+
+  <script>
+    // Injektoi squirrel.svg DOM:iin fetch:llä jotta CSS-muuttujat (--orava-fur) toimivat.
+    // <img>-tagilla ladattu SVG ei peri dokumentin CSS-muuttujia.
+    fetch('assets/squirrel.svg')
+      .then(r => r.text())
+      .then(svg => { document.getElementById('squirrel').innerHTML = svg; })
+      .catch(() => {
+        // Fallback: yksinkertainen oranssi orava (kehitystä varten, file://-protokolla)
+        document.getElementById('squirrel').innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+          '<ellipse cx="32" cy="36" rx="20" ry="22" fill="var(--orava-fur)"/>' +
+          '<ellipse cx="48" cy="20" rx="12" ry="16" fill="var(--orava-fur)" transform="rotate(20 48 20)"/>' +
+          '<circle cx="38" cy="22" r="4" fill="#1a1a1a"/>' +
+          '</svg>';
+      });
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>

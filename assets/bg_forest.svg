@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+  
+  <rect x="0" y="0" width="960" height="600" fill="#FBE7C6"></rect>
+  <rect x="0" y="0" width="960" height="210" fill="#FCEFD6"></rect>
+  
+  <circle cx="800" cy="120" r="58" fill="#F7D79B"></circle>
+  
+  <g fill="#FFF6E4">
+    <path d="M 120 110 C 120 96 134 90 146 94 C 152 80 178 80 184 96 C 200 92 210 106 200 116 C 190 122 132 122 120 116 Z"></path>
+    <path d="M 560 70 C 560 58 572 53 582 57 C 588 46 608 46 613 59 C 627 56 635 68 626 76 C 618 81 570 81 560 76 Z"></path>
+  </g>
+
+  
+  <g stroke="#3E2719" stroke-width="5" stroke-linejoin="round">
+    
+    <g fill="#9E5328">
+      <rect x="150" y="300" width="26" height="120" rx="8"></rect>
+      <rect x="455" y="280" width="30" height="150" rx="8"></rect>
+      <rect x="760" y="305" width="26" height="120" rx="8"></rect>
+    </g>
+    
+    <circle cx="163" cy="280" r="78" fill="#8FAE57"></circle>
+    <circle cx="115" cy="305" r="56" fill="#6E9145"></circle>
+    <circle cx="210" cy="300" r="58" fill="#DB8A41"></circle>
+
+    <circle cx="470" cy="250" r="92" fill="#6E9145"></circle>
+    <circle cx="410" cy="285" r="62" fill="#DB8A41"></circle>
+    <circle cx="528" cy="285" r="64" fill="#8FAE57"></circle>
+
+    <circle cx="773" cy="285" r="74" fill="#DB8A41"></circle>
+    <circle cx="728" cy="308" r="52" fill="#8FAE57"></circle>
+    <circle cx="818" cy="305" r="54" fill="#6E9145"></circle>
+  </g>
+
+  
+  <path fill="#C2904E" stroke="#3E2719" stroke-width="5" d="M 0 470 C 240 440 360 470 480 466 C 640 460 760 444 960 472 L 960 600 L 0 600 Z"></path>
+  <path fill="#9CBE5C" stroke="#3E2719" stroke-width="5" d="M 0 470 C 240 440 360 470 480 466 C 640 460 760 444 960 472 L 960 520 C 720 500 600 516 360 510 C 220 506 120 514 0 506 Z"></path>
+  
+  <g fill="#DB8A41" stroke="#3E2719" stroke-width="3">
+    <circle cx="300" cy="540" r="9"></circle>
+    <circle cx="640" cy="556" r="9"></circle>
+    <circle cx="860" cy="538" r="9"></circle>
+  </g>
+</svg>

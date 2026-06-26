@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="360" viewBox="0 0 460 360">
+  
+  
+  
+  <rect x="20" y="20" width="420" height="320" rx="32" fill="#FCEFD6" stroke="#3E2719" stroke-width="6"></rect>
+  <rect x="20" y="20" width="420" height="78" rx="32" fill="#C06A35"></rect>
+  <path fill="#C06A35" d="M 20 70 h 420 v 20 a 8 8 0 0 1 -8 8 H 28 a 8 8 0 0 1 -8 -8 Z"></path>
+  <line x1="20" y1="98" x2="440" y2="98" stroke="#3E2719" stroke-width="6"></line>
+  <text class="display" x="230" y="74" font-size="44" text-anchor="middle" fill="#FCEFD6" stroke="#3E2719" stroke-width="6" style="paint-order:stroke fill;">Peli ohi!</text>
+
+  
+  <text class="ui" x="230" y="150" font-size="22" text-anchor="middle" fill="#9E5328">PÄHKINÖITÄ KERÄTTY</text>
+  <text class="display" x="230" y="212" font-size="64" text-anchor="middle" fill="#DB8A41" stroke="#3E2719" stroke-width="6" style="paint-order:stroke fill;">128</text>
+
+  
+  <g>
+    <rect x="80" y="252" width="300" height="64" rx="32" fill="#9CBE5C" stroke="#3E2719" stroke-width="6"></rect>
+    <text class="display" x="230" y="295" font-size="30" text-anchor="middle" fill="#FCEFD6" stroke="#3E2719" stroke-width="5" style="paint-order:stroke fill;">Pelaa uudelleen</text>
+  </g>
+</svg>

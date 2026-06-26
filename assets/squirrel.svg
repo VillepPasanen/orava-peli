@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+
+  <g stroke="#3E2719" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- Turkki ja häntä: käyttää CSS-muuttujaa --orava-fur -->
+    <path id="fur" fill="var(--orava-fur)" d="
+      M 64 98 C 40 106 14 92 13 63 C 12 38 31 21 56 26 C 41 34 33 50 35 67 C 37 85 49 95 64 98 Z
+      M 108 58 C 104 44 99 35 95 32 C 96 23 98 14 103 12 C 108 10 111 17 109 26 C 108 33 102 36 96 39 C 87 33 74 31 63 36 C 50 42 45 57 46 75 C 47 93 58 108 76 109 C 92 110 102 97 102 81 C 102 71 104 64 108 58 Z
+    "></path>
+
+    <!-- Vatsa: vaaleampi sävy -->
+    <path fill="var(--orava-fur-light)" stroke-width="3" d="M 92 66 C 101 70 102 87 94 99 C 88 107 76 107 72 96 C 68 84 78 64 92 66 Z"></path>
+
+    <!-- Nenäkärki: tumma aksentti -->
+    <path fill="var(--orava-fur-dark)" stroke="none" d="M 100 17 C 103 16 105 20 104 25 C 101 24 99 21 100 17 Z"></path>
+
+    <!-- Tassut -->
+    <ellipse fill="var(--orava-fur)" cx="86" cy="103" rx="7" ry="5"></ellipse>
+    <ellipse fill="var(--orava-fur)" cx="64" cy="106" rx="8" ry="5"></ellipse>
+  </g>
+
+  <!-- Silmät -->
+  <circle fill="#3E2719" cx="93" cy="44" r="3.6"></circle>
+  <circle fill="#3E2719" cx="108" cy="55" r="3"></circle>
+</svg>
