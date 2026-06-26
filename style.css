@@ -6,9 +6,9 @@
    Vaihda oravan väri muuttamalla näitä kolmea riviä.
    ===================================================== */
 :root {
-  --orava-fur: #C06A35;
-  --orava-fur-light: #F8E4C1;
-  --orava-fur-dark: #9E5328;
+  --orava-fur: #909090;
+  --orava-fur-light: #D8D8D8;
+  --orava-fur-dark: #505050;
 }
 
 /* Reset ja perusasettelu */
