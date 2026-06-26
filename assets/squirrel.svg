@@ -2,7 +2,7 @@
 
   <g stroke="#3E2719" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
 
-    <!-- Turkki ja häntä: käyttää CSS-muuttujaa --orava-fur -->
+    <!-- Turkki ja häntä: käyttää CSS-muuttujaa orava-fur -->
     <path id="fur" fill="var(--orava-fur)" d="
       M 64 98 C 40 106 14 92 13 63 C 12 38 31 21 56 26 C 41 34 33 50 35 67 C 37 85 49 95 64 98 Z
       M 108 58 C 104 44 99 35 95 32 C 96 23 98 14 103 12 C 108 10 111 17 109 26 C 108 33 102 36 96 39 C 87 33 74 31 63 36 C 50 42 45 57 46 75 C 47 93 58 108 76 109 C 92 110 102 97 102 81 C 102 71 104 64 108 58 Z
